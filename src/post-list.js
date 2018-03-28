@@ -8,9 +8,9 @@ class PostList extends React.Component {
     });
 
     return (
-      <ul>
-        {listItems}
-      </ul>
+      this.props.posts.length
+        ? (<ul>{listItems}</ul>)
+        : <div>No items found</div>
     );
   }
 }

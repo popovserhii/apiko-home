@@ -8,7 +8,9 @@ class MoreButton extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleLoadMore}>Load More</button>
+      this.props.show
+        ? <button onClick={this.handleLoadMore}>Load More</button>
+        : <div>No items left</div>
     );
   }
 }
