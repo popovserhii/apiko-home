@@ -3,6 +3,7 @@ import PostList from './post-list';
 import MoreButton from './more-button';
 import SearchBar from './search-bar';
 import fetchData from './fetch-data';
+import {Row, Col, Preloader} from 'react-materialize';
 
 class App extends React.Component {
   itemsPerGroup = 5;
@@ -57,7 +58,13 @@ class App extends React.Component {
     let {posts, isLoading} = this.state;
 
     if (isLoading) {
-      return <h3>Loading...</h3>
+      return (
+        <Row>
+          <Col s={12}>
+            <Preloader size='big'/>
+          </Col>
+        </Row>
+      );
     }
 
     return (
@@ -66,11 +73,13 @@ class App extends React.Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
 
-        <div className="content">
-          <SearchBar onSearchChange={this.handleSearchChange} />
-          <PostList posts={posts} />
-          <MoreButton show={this.havePostsLeft()} onLoadMoreClick={this.handleLoadMoreClick} />
-        </div>
+        <Row>
+          <Col s={12}>
+              <SearchBar onSearchChange={this.handleSearchChange}/>
+              <PostList posts={posts}/>
+              <MoreButton show={this.havePostsLeft()} onLoadMoreClick={this.handleLoadMoreClick}/>
+          </Col>
+        </Row>
       </div>
     );
   }
